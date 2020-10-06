@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+${head}
+</head>
+
+<body>
+<h1>My Todos</h1>
+<ul>
+    ${todos.map(todo => {
+    return `
+    <li>
+        <a href="/todos/${todo.id}">${todo.todo}</a>
+        <form action="/todos/${todo.id}?_method=DELETE" method="POST">
+        <button type="submit">X</button>
+        </form>
+    </li>
+    `
+    }).join('')}
+</ul>
+
+${ message ? `<div>${message}</div>` : ''}
+
+<form action="" method="post">
+    <div>
+    <label for="todo">Todo Item</label>
+    <input type="text" name="todo" id="todo" required>
+    </div>
+    <button type="submit">Send it</button>
+</form>
+</body>
+
+</html>
